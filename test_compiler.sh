@@ -13,17 +13,17 @@ print_test_name () {
 }
 
 test_success () {
-    echo "OK"
+    echo "Амжилттай"
     ((success++))
 }
 
 test_failure () {
-    echo "FAIL"
+    echo "Унсан"
     ((fail++))
 }
 
 test_not_implemented () {
-    echo "NOT IMPLEMENTED"
+    echo "Бүртгэгдээгүй"
 }
 
 run_our_program () {
@@ -53,7 +53,7 @@ test_stage () {
     fail=0
     echo "===================================================="
     echo "STAGE $1"
-    echo "===================Valid Programs==================="
+    echo "=================== Шалгалтанд Унасан програмууд ==================="
     for prog in `find . -type f -name "*.c" -path "./stage_$1/valid/*" -not -path "*/valid_multifile/*" 2>/dev/null`; do
 
         gcc -w $prog
@@ -101,7 +101,7 @@ test_stage () {
         compare_program_results
 
     done
-    echo "===================Invalid Programs================="
+    echo "=================== Шалгалтанд Унасан програмууд ================="
     for prog in `ls stage_$1/invalid/{,**/}*.c 2>/dev/null`; do
 
         base="${prog%.*}" #name of executable (filename w/out extension)
@@ -122,21 +122,21 @@ test_stage () {
             test_success
         fi
     done
-    echo "===================Stage $1 Summary================="
-    printf "%d successes, %d failures\n" $success $fail
+    echo "=================== $1 дүгнэлт ================="
+    printf "%d Амжилттай, %d Унасан\n" $success $fail
     ((success_total=success_total+success))
     ((failure_total=failure_total + fail))
 }
 
 total_summary () {
-    echo "===================TOTAL SUMMARY===================="
-    printf "%d successes, %d failures\n" $success_total $failure_total
+    echo "=================== Нийт Үр Дүн ===================="
+    printf "%d Амжилттай, %d Унасан\n" $success_total $failure_total
 }
 
 if [ "$1" == "" ]; then
-    echo "USAGE: ./test_compiler.sh /path/to/compiler [stages(optional)]"
-    echo "EXAMPLE(test specific stages): ./test_compiler.sh ./mycompiler 1 2 4"
-    echo "EXAMPLE(test all): ./test_compiler.sh ./mycompiler"
+    echo "Хэрэглээ: ./test_compiler.sh /path/to/compiler [stages(optional)]"
+    echo "Жишээ(test specific stages): ./test_compiler.sh ./mycompiler 1 2 4"
+    echo "Жишээ(test all): ./test_compiler.sh ./mycompiler"
     exit 1
 fi
 

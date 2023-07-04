@@ -1,6 +1,3 @@
-# mini_c_compiler
-
-
 # Project Title: Mini C Compiler
 # Project Description:
 The Mini C Compiler is a project that aims to create a simple C compiler that can generate executable code from C source files. The compiler will support a subset of the C language syntax and will generate code for a specific target platform (e.g. x86, ARM). The project will involve creating a lexer, parser, code generator, and linker for the target platform.
@@ -59,7 +56,3 @@ In order to use this script, your compiler needs to follow this spec:
 3. It doesn’t generate assembly or an executable if parsing fails (this is what the test script checks for invalid test programs).
 
 The script doesn’t check whether your compiler outputs sensible error messages, but you can use the invalid test programs to test that manually.
-
-## Contribute
-
-Additional test cases welcome! You can also file issues here, either about the test suite itself or about the content of the tutorial.
