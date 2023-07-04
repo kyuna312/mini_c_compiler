@@ -30,4 +30,36 @@ Implement the linker: Use a platform-specific tool, such as GCC or Clang, to lin
 Build a command-line interface: Create a command-line interface that allows the user to compile C source files, specifying the target platform and generating executable binaries.
 Test and debug: Test the compiler with various input programs and debug any errors or unexpected behaviors.
 Keep in mind that this is a simplified outline of the steps required to implement a Mini C Compiler project, and each step can involve a significant amount of coding and testing.
-There are also many online resources, including tutorials and sample projects, that can help you get started with implementing a Mini C Compiler project, such as the tutorial at https://norasandler.com/2017/11/29/Write-a-Compiler.html.
+
+# Write a C Compiler!
+
+## Usage
+
+### test all
+```
+./test_compiler.sh /path/to/your/compiler
+```
+
+### test specific stages
+To test stage 1 and stage 3,
+```
+./test_compiler.sh /path/to/your/compiler 1 3
+```
+To test from stage 1 to stage 6,
+```
+./test_compiler.sh /path/to/your/compiler `seq 1 6`
+```
+
+In order to use this script, your compiler needs to follow this spec:
+
+1. It can be invoked from the command line, taking only a C source file as an argument, e.g.: `./YOUR_COMPILER /path/to/program.c`
+
+2. When passed `program.c`, it generates executable `program` in the same directory.
+
+3. It doesn’t generate assembly or an executable if parsing fails (this is what the test script checks for invalid test programs).
+
+The script doesn’t check whether your compiler outputs sensible error messages, but you can use the invalid test programs to test that manually.
+
+## Contribute
+
+Additional test cases welcome! You can also file issues here, either about the test suite itself or about the content of the tutorial.
